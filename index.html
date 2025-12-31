@@ -338,22 +338,22 @@
   }
 
   function onAllTextFinished() {
-    // 淡出旧内容（1.5秒后）
-    setTimeout(() => {
-      document.querySelectorAll('.popup').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'scale(0.7)';
-      });
-      textContainer.style.opacity = '0';
-    }, 1500);
+  // 🕒 让图片多停留：从 1.5秒 → 4秒（或你想要的任意时间）
+  setTimeout(() => {
+    document.querySelectorAll('.popup').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'scale(0.7)';
+    });
+    textContainer.style.opacity = '0';
+  }, 4000); // ←←← 改这里！单位是毫秒（4000 = 4秒）
 
-    // 淡入 Final 并启动打字（2.5秒后）
-    setTimeout(() => {
-      finalScene.style.opacity = '1';
-      finalScene.style.pointerEvents = 'auto';
-      typeFinalMessage();
-    }, 2500);
-  }
+  // 最终画面出现时间也要相应延后（建议比图片淡出晚 1 秒）
+  setTimeout(() => {
+    finalScene.style.opacity = '1';
+    finalScene.style.pointerEvents = 'auto';
+    typeFinalMessage();
+  }, 5000); // ←←← 比上面多 1000ms（即 5秒后出现最终画面）
+}
 
   function initStarBackground() {
     const canvas = document.getElementById('fireworks');
@@ -396,4 +396,5 @@
 </script>
 
 </body>
+
 </html>
